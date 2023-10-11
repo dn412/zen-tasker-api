@@ -59,9 +59,9 @@ Request - users#signup:
 ```json
 {
     "credentials": {
-      "email": "an@example.email",
-      "password": "an example password",
-      "password_confirmation": "an example password"
+      "email": "an@task.email",
+      "password": "an task password",
+      "password_confirmation": "an task password"
     }
 }
 ```
@@ -69,3 +69,8 @@ Request - users#signup:
 ### Token Auth Strategy
 
 Send the token as `Bearer Token <token>`
+
+
+### ERD
+
+![Alt text](images/zenERD.png)

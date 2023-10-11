@@ -29,7 +29,7 @@ const router = express.Router()
 // POST /sign-up
 router.post('/sign-up', (req, res, next) => {
 	// start a promise chain, so that any errors will pass to `handle`
-	Promise.resolve(req.body.credentials)
+	Promise.resolve(req.body)
 		// reject any requests where `credentials.password` is not present, or where
 		// the password is an empty string
 		.then((credentials) => {
@@ -42,11 +42,11 @@ router.post('/sign-up', (req, res, next) => {
 			}
 		})
 		// generate a hash from the provided password, returning a promise
-		.then(() => bcrypt.hash(req.body.credentials.password, bcryptSaltRounds))
+		.then(() => bcrypt.hash(req.body.password, bcryptSaltRounds))
 		.then((hash) => {
 			// return necessary params to create a user
 			return {
-				email: req.body.credentials.email,
+				email: req.body.email,
 				hashedPassword: hash,
 			}
 		})
@@ -62,11 +62,11 @@ router.post('/sign-up', (req, res, next) => {
 // SIGN IN
 // POST /sign-in
 router.post('/sign-in', (req, res, next) => {
-	const pw = req.body.credentials.password
+	const pw = req.body.password
 	let user
 
 	// find a user based on the email that was passed
-	User.findOne({ email: req.body.credentials.email })
+	User.findOne({ email: req.body.email })
 		.then((record) => {
 			// if we didn't find a user with that email, send 401
 			if (!record) {
