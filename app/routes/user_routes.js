@@ -16,7 +16,7 @@ const BadParamsError = errors.BadParamsError
 const BadCredentialsError = errors.BadCredentialsError
 
 const User = require('../models/user')
-
+const Task = require('../models/task')
 // passing this as a second argument to `router.<verb>` will make it
 // so that a token MUST be passed for that route to be available
 // it will also set `res.user`
@@ -143,4 +143,17 @@ router.delete('/sign-out', requireToken, (req, res, next) => {
 		.catch(next)
 })
 
+// get all the tasks by a single user
+router.get("/user/:id", async (req, res, next) => {
+	// get the id of loged in user
+	const user = await User.findById(req.params.id).exec();
+	// find all the tasks that have the same owner using the owner id
+	Task.find({ owner: user._id }).then(function (tasks) {
+	  console.log("tasks", tasks.length, user);
+	  res.status(200).json({ tasks });
+	  // Now you can pass both the task and tickets in the res.render call
+	});
+  });
+
 module.exports = router
+
