@@ -5,7 +5,9 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 // pull in Mongoose model for tasks
 const Task = require("../models/task");
+const AllTasks = require('../models/alltasks')
 const User = require("../models/user");
+
 // this is a collection of methods that help us detect situations when we need
 // to throw a custom error
 const customErrors = require("../../lib/custom_errors");
@@ -29,7 +31,7 @@ const router = express.Router();
 
 // INDEX
 // GET /tasks
-router.get("/tasks", requireToken, (req, res, next) => {
+router.get("/tasks",  (req, res, next) => {
   // const { category } = req.query;
   //   const query = category ? { category } : {};
   Task.find()
@@ -116,5 +118,24 @@ router.delete("/tasks/:id", requireToken, (req, res, next) => {
     // if an error occurs, pass it to the handler
     .catch(next);
 });
+
+
+// GET /tasks
+router.get("/alltasks", (req, res, next) => {
+  // const { category } = req.query;
+  //   const query = category ? { category } : {};
+  AllTasks.find()
+    .then((tasks) => {
+      // `tasks` will be an array of Mongoose documents
+      // we want to convert each one to a POJO, so we use `.map` to
+      // apply `.toObject` to each one
+      res.status(200).json(tasks)
+    })
+    // respond with status 200 and JSON of the tasks
+    // .then((tasks) => res.status(200).json({ tasks: tasks }))
+    // if an error occurs, pass it to the handler
+    .catch(next);
+});
+
 
 module.exports = router;

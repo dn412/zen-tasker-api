@@ -1,0 +1,56 @@
+[  {
+     "id": 1,
+      "category": "Mindulness Tasks",
+       "details":[
+        {"title": "Morning Mindfulness Meditation", "description": "Spend 10 minutes meditating each morning"},
+        {"title": "Mindful Eating", "description": "Practice eating a meal mindfully,paying full attention to the flavors, textures, and smells."},
+        {"title": "Gratitude Journal", "description": "Write down three things you are grateful for today."},
+        {"title": "Mindful Walking", "description": "Take a short walk and pay full attention to your steps, the sounds around you, and your breath."},
+        {"title": "Body Scan Meditation", "description": "Spend some time doing a mindful body scan to connect with your physical self and notice any areas of tension or discomfort."}
+
+       ]
+},
+
+{
+    "id": 2,
+     "category": "Stress Relief Tasks",
+      "details":[
+        {"title": "Yoga Session", "description": "Engage in a 20-minute yoga session focusing on poses that promote relaxation."},
+        {"title": "Create Art", "description": "Spend time painting, drawing, or engaging in any creative activity, focusing fully on the process."},
+        {"title": "Connect with Nature", "description": "Spend at least 30 minutes outdoors, ideally in a natural setting like a park or a forest."},
+        {"title": "Digital Detox", "description": "Dedicate an hour or more where you disconnect from all digital devices and engage in a non-digital activity."},
+        {"title": "Read a Book", "description": "Spend some quality time getting lost in a good book."}
+
+      ]
+    },
+
+
+{
+    "id": 3,
+     "category": "Breathwork Tasks",
+      "details":[
+        {"title": "Deep Breathing Exercise", "description": "Practice 5 minutes of deep belly breathing to stimulate the parasympathetic nervous system."},
+        {"title": "4-7-8 Breathing", "description": "Practice the 4-7-8 breathing technique (inhale for 4, hold for 7, exhale for 8) for a few cycles."},
+        {"title": "Box Breathing", "description": "Practice box breathing (inhale for 4, hold for 4, exhale for 4, pause for 4) for a few minutes."},
+        {"title": "Progressive Muscle Relaxation", "description": "Combine deep breathing with progressively tensing and then relaxing different muscle groups in the body."},
+        {"title": "Alternate Nostril Breathing", "description": "Spend a few minutes practicing alternate nostril breathing to balance the nervous system."}
+
+      ]
+    },
+
+    {
+        "id": 4,
+         "category": "General Wellness Tasks",
+          "details":[
+        {"title": "Sleep Hygiene", "description": "Ensure you have a wind-down routine and aim for 7-9 hours of sleep."},
+        {"title": "Healthy Eating", "description": "Prepare a nutritious meal, focusing on a balanced intake of vegetables, proteins, and carbohydrates."},
+        {"title": "Physical Exercise", "description": "Engage in some form of physical exercise, whether it's a workout, cycling, or a simple stretch routine."},
+        {"title": "Socialize", "description": "Spend time with loved ones, even if it’s a quick call or meeting for a coffee."},
+        {"title": "Self-Care Routine", "description": "Dedicate time for a self-care routine, it may involve a warm bath, skincare, or simply relaxing with a favorite TV show."}
+    
+          ]
+        }
+    
+
+    
+    ]
