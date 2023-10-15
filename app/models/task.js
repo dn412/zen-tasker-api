@@ -1,24 +1,29 @@
 const mongoose = require('mongoose')
 
 const tasksSchema = new mongoose.Schema(
-	{
-		title: {
-			type: String,
-			required: true,
-		},
-		text: {
-			type: String,
-			required: true,
-		},
-		owner: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'User',
-			required: true,
-		},
-	},
-	{
-		timestamps: true,
-	}
-)
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    category: {
+      type: String, // Add a category field
+      required: true,
+    },
+	completed: Boolean,
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model('Tasks',tasksSchema)
