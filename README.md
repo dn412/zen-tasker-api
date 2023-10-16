@@ -1,6 +1,28 @@
 # ZenTasker
 
-ZenTasker serves as your personal wellness task manager, seamlessly integrating mindfulness exercises, positivity trackers, and inspirational content into your daily to-do list. This application transcends the capabilities of a conventional to-do app by marrying mindfulness and productivity strategies to sharpen user focus and optimize task management. Its design seeks to inspire users to practice mindfulness, sustain concentration, and adeptly manage stress.
+This is the backend for the full stack To-Do app for my ZenTasker.
+
+## Planning section
+
+2 parts associated with planning our API(the backend)
+- ERD
+- User Stories
+
+#### User Stories
+
+AAU I want to...
+- Create users
+- Sign in users
+- Sign out users
+- Change password
+- Create tasks
+- See a list of all tasks
+- See a list of MY tasks
+- See a single task
+- Edit a task
+- Delete a task
+- Add task completion
+
 
 # Screenshot
 
@@ -15,6 +37,7 @@ ZenTasker serves as your personal wellness task manager, seamlessly integrating 
 - Express
 - Mongoose
 - MongoDB
+- Jwt
 
 
 ### Authentication
@@ -25,6 +48,7 @@ ZenTasker serves as your personal wellness task manager, seamlessly integrating 
 | POST   | `/sign-in`             | `users#signin`    |
 | PATCH  | `/change-password/` | `users#changepw`  |
 | DELETE | `/sign-out/`        | `users#signout`   |
+| GET    | `/user/<user_id>`        | `users#tasks`   |
 
 
 
@@ -33,21 +57,10 @@ ZenTasker serves as your personal wellness task manager, seamlessly integrating 
 | Verb   | URI Pattern            | Controller#Action |
 |--------|------------------------|-------------------|
 | GET   | `/tasks`              | `tasks#index`    |
-| GET   | `/tasks/<task_id>`    | `tasks#show`     |
+| GET   | `/tasks/<task_id>`    | `tasks#details`     |
 | POST   | `/tasks`             | `tasks#create`   |
-| PATCH  | `/tasks/<recipe_id>` | `tasks#update`   |
-| DELETE | `/tasks/<recipe_id>` | `tasks#delete`   |
-
-
-#### Categories
-
-| Verb   | URI Pattern            | Controller#Action |
-|--------|------------------------|-------------------|
-| GET   | `/categories`             | `categories#index`    |
-| GET   | `/categories/<category_id`             | `categories#show`    |
-| POST   | `/categories`             | `categories#create`   |
-| PATCH  | `/categories/<category_id>` | `categories#update`   |
-| DELETE | `/categories/<category_id>` | `categories#delete`   |
+| PATCH  | `/tasks/<task_id>` | `tasks#update`   |
+| DELETE | `/tasks/<task_id>` | `tasks#delete`   |
 
 
 
@@ -58,13 +71,30 @@ Request - users#signup:
 
 ```json
 {
-    "credentials": {
+    
       "email": "an@task.email",
       "password": "an task password",
       "password_confirmation": "an task password"
+    
+}
+```
+
+
+
+Request - tasks#create (requires a token):
+
+```json
+{
+    "task": {
+        "category": "Stress Relief Tasks",
+        "title": "Yoga Session",
+        "description": "Engage in a 20-minute yoga session focusing on poses that promote relaxation.",
+        "complete": true
     }
 }
 ```
+
+
 
 ### Token Auth Strategy
 

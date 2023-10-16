@@ -81,14 +81,17 @@ router.post("/sign-in", (req, res, next) => {
     .then((correctPassword) => {
       // if the passwords matched
       if (correctPassword) {
-        // the token will be a 16 byte random hex string
+        // create token with jwt
         const token = jwt.sign(
-          { id: user._id, email: user.email, password: user.hashedpassword },
+          { id: user._id,
+             email: user.email,
+            password: user.hashedpassword },
           "secret",
           {
-            expiresIn: "6h",
+            expiresIn: "6h", // Token expires in 6h
           }
-        ); // Token expires in 6h
+        ); 
+        // assign the token to user
         user.token = token;
         // save the token to the DB as a property on user
         return user.save();
@@ -180,17 +183,5 @@ router.get("/user/:id", requireToken, async (req, res, next) => {
   });
 });
 
-// get the user
-// router.get("/me/:id", requireToken, (req, res) => {
-//   if (req.user.id == req.params.id) {
-//     User.findById(req.params.id)
-//       .then((data) => {
-//         res.status(200).json({ success: true, data });
-//       })
-//       .catch((err) => res.status(404).send("No user found."));
-//   } else {
-//     res.json({ error: "can not fetch data for another user" });
-//   }
-// });
 
 module.exports = router;

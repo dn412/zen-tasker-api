@@ -5,7 +5,7 @@ const passport = require("passport");
 const jwt = require("jsonwebtoken");
 // pull in Mongoose model for tasks
 const Task = require("../models/task");
-const AllTasks = require('../models/alltasks')
+// pull in Mongoose model for users
 const User = require("../models/user");
 
 // this is a collection of methods that help us detect situations when we need
@@ -25,6 +25,7 @@ const removeBlanks = require("../../lib/remove_blank_fields");
 // so that a token MUST be passed for that route to be available
 // it will also set `req.user`
 // const requireToken = passport.authenticate({token,  session: false });
+// create a JWT port as a required token instead of using Password
 const { requireToken } = require("../../lib/jwtAuth");
 // instantiate a router (mini app that only handles routes)
 const router = express.Router();
@@ -120,22 +121,7 @@ router.delete("/tasks/:id", requireToken, (req, res, next) => {
 });
 
 
-// GET /tasks
-router.get("/alltasks", (req, res, next) => {
-  // const { category } = req.query;
-  //   const query = category ? { category } : {};
-  AllTasks.find()
-    .then((tasks) => {
-      // `tasks` will be an array of Mongoose documents
-      // we want to convert each one to a POJO, so we use `.map` to
-      // apply `.toObject` to each one
-      res.status(200).json(tasks)
-    })
-    // respond with status 200 and JSON of the tasks
-    // .then((tasks) => res.status(200).json({ tasks: tasks }))
-    // if an error occurs, pass it to the handler
-    .catch(next);
-});
+
 
 
 module.exports = router;
